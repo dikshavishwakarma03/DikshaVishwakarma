@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+    scroll-behavior: smooth;
+    transition: scroll 0.5s ease-in-out;
+}
+
+.blueShadow{
+    box-shadow: 3px 3px 0 0 rgb(102,255,219);
+}
+.blueShadow:hover{
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0 0 rgb(102,255,219);
+}
