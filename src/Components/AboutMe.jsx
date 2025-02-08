@@ -77,13 +77,13 @@ const AboutMe = () => {
               href="https://developer.mozilla.org/en-US/docs/Web/HTML"
               className="text-[rgb(100,255,218)]"
             >
-              > HTML
+              {">"} HTML
             </a>
             <a
               href="https://developer.mozilla.org/en-US/docs/Web/CSS"
               className="text-[rgb(100,255,218)]"
             >
-              > CSS
+            {">"}CSS
             </a>
           </div>
 
@@ -92,13 +92,13 @@ const AboutMe = () => {
               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
               className="text-[rgb(100,255,218)]"
             >
-              > JAVASCRIPT
+              {">"} JAVASCRIPT
             </a>
             <a
               href="https://legacy.reactjs.org/docs/getting-started.html"
               className="text-[rgb(100,255,218)]"
             >
-              > REACTJS
+               {">"} REACTJS
             </a>
           </div>
 
@@ -107,13 +107,13 @@ const AboutMe = () => {
               href="https://docs.oracle.com/en/java/"
               className="text-[rgb(100,255,218)]"
             >
-              > JAVA
+               {">"} JAVA
             </a>
             <a
               href="https://dev.mysql.com/doc/"
               className="text-[rgb(100,255,218)]"
             >
-              > SQL
+               {">"} SQL
             </a>
           </div>
 
@@ -122,13 +122,13 @@ const AboutMe = () => {
               href="https://nextjs.org/docs"
               className="text-[rgb(100,255,218)]"
             >
-              > NEXTJS
+               {">"} NEXTJS
             </a>
             <a
               href="https://www.typescriptlang.org/docs/"
               className="text-[rgb(100,255,218)]"
             >
-              > TypeScript
+               {">"} TypeScript
             </a>
           </div>
         </motion.div>
