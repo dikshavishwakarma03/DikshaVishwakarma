@@ -7,7 +7,6 @@ import LeftSide from './Components/LeftSide'
 import RightSide from './Components/RightSide'
 import Contact from './Components/Contact'
 import Project from './Components/Project'
-import ContactMe from './Components/contactMe'
 import { Route, Routes } from 'react-router-dom'
 import  { useEffect } from 'react';
 
