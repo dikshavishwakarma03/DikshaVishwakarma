@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import React from "react";
+import image from "../assets/img/profie.jpg"
 
 const AboutMe = () => {
   const backgroundVariants = {
@@ -142,9 +144,9 @@ const AboutMe = () => {
           transition={{ duration: 0.5, delay: 1.2 }}
           className="w-64 h-64 sm:w-80 sm:h-80 bg-[rgb(100,255,218)] hover:opacity-20 rounded-lg flex items-center justify-center overflow-hidden"
         >
-          <img
-            src="/public/image/profie_image.jpg"
-            alt="profile image"
+           <img
+            src={image} // Corrected to use the imported image variable
+            alt="Profile image"
             className="w-full h-full object-cover rounded-lg transition-all duration-300 hover:scale-105"
           />
         </motion.div>

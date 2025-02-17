@@ -3,29 +3,46 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, X, Check } from "lucide-react";
 
 const ContactMe = ({ isOpen, setIsOpen }) => {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [result, setResult] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Submitted:", { email, message });
-    setSubmitted(true); 
-    setTimeout(() => {
-      setIsOpen(false); 
-    }, 2000); 
+  const onSubmit = async (event) => {
+    event.preventDefault(); 
+    setResult("Sending....");
+
+    const formData = new FormData(event.target);
+    formData.append("access_key", "a72bce3a-292e-46e5-8b06-cf75bb2daf19");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      setSubmitted(true); 
+      setTimeout(() => {
+        setIsOpen(false); 
+        setSubmitted(false); 
+      }, 2000);
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 bg-black/50 flex justify-center items-center z-50"
         >
-          <motion.div 
+          <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
@@ -36,7 +53,7 @@ const ContactMe = ({ isOpen, setIsOpen }) => {
             <motion.button
               whileHover={{ rotate: 90, scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => setIsOpen(false)} 
+              onClick={() => setIsOpen(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
             >
               <X size={24} />
@@ -54,12 +71,8 @@ const ContactMe = ({ isOpen, setIsOpen }) => {
                     className="flex flex-col items-center space-y-4 text-white"
                   >
                     <Check size={64} className="text-green-500" />
-                    <h2 className="text-2xl font-bold">
-                      Thank you for reaching out!
-                    </h2>
-                    <p className="text-gray-400">
-                      I'll get back to you soon.
-                    </p>
+                    <h2 className="text-2xl font-bold">Thank you for reaching out!</h2>
+                    <p className="text-gray-400">I'll get back to you soon.</p>
                   </motion.div>
                 ) : (
                   <motion.div
@@ -67,21 +80,17 @@ const ContactMe = ({ isOpen, setIsOpen }) => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
-                    <h1 className="text-3xl font-bold mb-4 text-white">
-                      Contact Me
-                    </h1>
+                    <h1 className="text-3xl font-bold mb-4 text-white">Contact Me</h1>
                     <p className="text-gray-400 text-sm mb-6">
-                      I am here to help with any questions regarding my services,
-                      programs, or events.
+                      I am here to help with any questions regarding my services, programs, or events.
                     </p>
 
                     {/* Form */}
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <form onSubmit={onSubmit} className="space-y-4">
                       <motion.input
                         whileFocus={{ scale: 1.02 }}
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        name="email" // ✅ Add "name" attribute
                         placeholder="Your email address"
                         className="rounded-lg border-2 border-gray-700 focus:border-teal-500 w-full p-3 bg-gray-800 placeholder:text-gray-500 text-white transition-all"
                         required
@@ -89,8 +98,7 @@ const ContactMe = ({ isOpen, setIsOpen }) => {
 
                       <motion.textarea
                         whileFocus={{ scale: 1.02 }}
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
+                        name="message" // ✅ Add "name" attribute
                         placeholder="Your message"
                         className="rounded-lg border-2 border-gray-700 focus:border-teal-500 w-full p-3 bg-gray-800 placeholder:text-gray-500 text-white transition-all"
                         rows={5}
@@ -106,6 +114,8 @@ const ContactMe = ({ isOpen, setIsOpen }) => {
                         <Send size={20} className="mr-2" /> Send Message
                       </motion.button>
                     </form>
+                    {/* ✅ Show Submission Status */}
+                    {result && <p className="text-gray-400 text-sm mt-2">{result}</p>}
                   </motion.div>
                 )}
               </AnimatePresence>

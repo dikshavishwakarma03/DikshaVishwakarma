@@ -1,4 +1,8 @@
 import { ExternalLink, Github } from "lucide-react";
+import React from "react";
+import projImg1 from "../assets/img/netflix-clone.png";
+import projImg2 from "../assets/img/music-academy.jpg";
+import projImg3 from "../assets/img/Weather.png";
 
 const Project = () => {
   const projects = [
@@ -6,7 +10,7 @@ const Project = () => {
       title: "Netflix-web",
       description:
         "This project, titled Netflix-Web, is a web application built on React and utilizes Vite to facilitate rapid development, alongside ESLint to ensure high code quality. It acts as a foundational framework for constructing an interface reminiscent of Netflix, although the repository mainly comprises the structural and configuration files necessary for establishing a contemporary front-end environment.",
-      image: "/public/image/netflix-clone.png",
+      image: projImg1, // Store the image path
       featured: true,
       links: {
         github: "https://github.com/dikshavishwakarma03/Netflix-Web",
@@ -16,7 +20,7 @@ const Project = () => {
       title: "Music-Academy",
       description:
         "The Music Academy project is a web application designed to provide a platform for music learning and teaching. The application likely incorporates features that allow users to explore various music courses and educational content. It's built with web technologies that might include JavaScript frameworks like React or Next.js, focusing on delivering a seamless and engaging user experience.",
-      image: "/public/image/music-academy.jpg",
+      image: projImg2,
       links: {
         github: "https://github.com/dikshavishwakarma03/Music-Academy",
       },
@@ -25,12 +29,13 @@ const Project = () => {
       title: "Weather App",
       description:
         "The Weather App is a simple React-based application designed to display current weather conditions. Users can search for weather information in different cities and view data like temperature, humidity, and wind speed. It uses the OpenWeatherMap API to fetch real-time data. The project is a great example of using external APIs to build interactive web apps.",
-      image: "/public/image/Weather.png",
+      image: projImg3,
       links: {
         github: "https://github.com/dikshavishwakarma03/weather-app",
       },
     },
   ];
+
 
   return (
     <section
@@ -110,7 +115,8 @@ const Project = () => {
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          href="https://github.com"
+          href="https://github.com/dikshavishwakarma03?tab=repositories"
+          target="_blank" rel="noopener noreferrer"
           className="inline-block px-8 py-4 border border-teal-300 text-teal-300 blueShadow duration-200 rounded hover:bg-teal-300/10 transition-colors"
         >
           View More

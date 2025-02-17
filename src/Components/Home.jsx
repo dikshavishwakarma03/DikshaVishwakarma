@@ -83,7 +83,7 @@ const Home = () => {
             className="px-6 py-2 rounded-md text-teal-300 border border-solid border-teal-300 hover:bg-teal-300/10 blueShadow duration-200 mt-5 mb-5"
           >
             <a
-              href="https://drive.google.com/file/d/1s_IwY51x3usGdTP8oVSRMvtK4bF70v69/view?usp=drive_link"
+              href="https://drive.google.com/file/d/16yy4m6VtcjQeoQCkEqmLQ9YKNsNoasN_/view?usp=sharing"
               target="blank"
             >
               Resume
